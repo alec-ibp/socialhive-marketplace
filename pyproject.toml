@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "hive-marketplace"
+version = "0.1.0"
+description = ""
+authors = ["alec <alejo1ibarra@gmail.com>"]
+readme = "README.md"
+packages = [{include = "hive_marketplace"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.103.0"
+redis-om = "^0.2.1"
+python-dotenv = "^1.0.0"
+uvicorn = "^0.23.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
