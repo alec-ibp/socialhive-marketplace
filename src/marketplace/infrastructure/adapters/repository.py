@@ -18,3 +18,6 @@ class ProductRepository(AbstractRepository):
 
     def list(self) -> list[Product]:
         return Product.all_pks()
+
+    def add(self, product: Product) -> Product:
+        return product.save()
