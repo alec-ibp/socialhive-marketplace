@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  marketplace_web:
+    container_name: web_marketplace_hive
+    image: marketplace_hive:latest
+    command: python main.py
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis_marketplace_hive
+    image: redis/redis-stack:latest
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/data:/data
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+volumes:
+  redis_data:
