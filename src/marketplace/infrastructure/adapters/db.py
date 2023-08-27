@@ -1,7 +1,7 @@
 from config import settings
 
 from redis import Redis
-from redis_om import get_redis_connection
+from redis_om.connections import get_redis_connection
 
 
 def get_redis_session() -> Redis:

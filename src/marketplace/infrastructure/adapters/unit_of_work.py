@@ -6,7 +6,7 @@ from abc import ABC, abstractmethod
 
 from src.marketplace.domain.models import Product
 from . import repository
-from .db import get_redis_connection
+from .db import get_redis_session
 
 
 class AbstractUnitOfWork(ABC):
@@ -30,7 +30,7 @@ class AbstractUnitOfWork(ABC):
 class RedisUnitOfWork(AbstractUnitOfWork):
     def __init__(self, session: Any = None) -> None:
         if not session:
-            self.session_factory = get_redis_connection
+            self.session_factory = get_redis_session
         else:
             self.session_factory = session
 
