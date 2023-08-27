@@ -7,11 +7,12 @@ readme = "README.md"
 packages = [{include = "hive_marketplace"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 fastapi = "^0.103.0"
 redis-om = "^0.2.1"
 python-dotenv = "^1.0.0"
 uvicorn = "^0.23.2"
+pydantic = {extras = ["email"], version = "^1.8.2"} # downgraded to 1.8.2 because of redis om imcompatibility
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
