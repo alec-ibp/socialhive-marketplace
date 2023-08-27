@@ -1,4 +1,4 @@
-from redis_om import HashModel
+from redis_om.model import HashModel
 
 
 class Product(HashModel):
