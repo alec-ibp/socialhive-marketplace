@@ -35,7 +35,7 @@ def _startup_event() -> None:
 
 def _set_urls(app: ASGIApp) -> None:
     for _app in settings.INSTALLED_APPS:
-        app_urls = importlib.import_module(f"src.{_app}.urls")
+        app_urls = importlib.import_module(f"src.{_app}.infrastructure.api.urls")
         if not hasattr(app_urls, "router"):
             raise Exception("missing router")  # MissingAPIRouterError()
         app.include_router(app_urls.router)
