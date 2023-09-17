@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from redis_om.model import NotFoundError
+
 from src.marketplace.domain.models import Product
 from src.marketplace.domain.interfaces import AbstractRepository
 
@@ -18,7 +20,10 @@ class ProductRepository(AbstractRepository):
         return product.save()
 
     def get(self, product_id: int) -> Product:
-        return Product.get(product_id)
+        try:
+            return Product.get(product_id)
+        except NotFoundError:
+            return None
 
     def delete(self, product_id: int) -> None:
         return Product.delete(product_id)
