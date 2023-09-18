@@ -27,3 +27,7 @@ CORS_ALLOWED_HOSTS: list[str] = os.environ.get("CORS_ALLOWED_HOSTS", "").split("
 REDIS_HOST: str = os.environ.get("REDIS_HOST")
 REDIS_PORT: int = os.environ.get("REDIS_PORT", 6379)
 REDIS_PASSWORD: str = os.environ.get("REDIS_PASSWORD")
+
+
+# Microservices apis
+BASE_PAYMENTS_API: str = os.environ.get("BASE_PAYMENTS_API")

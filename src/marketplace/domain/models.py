@@ -16,3 +16,8 @@ class ProductOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class OrderRequest(BaseModel):
+    product_id: str
+    quantity: int
