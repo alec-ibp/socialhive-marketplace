@@ -10,7 +10,7 @@ from .db import get_redis_session
 
 
 class AbstractUnitOfWork(ABC):
-    product: repository.AbstractRepository
+    product: repository.AbstractRepository  # TODO is right declare here due to is an abstract class?
 
     def __enter__(self):
         return self
