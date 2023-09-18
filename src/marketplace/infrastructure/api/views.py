@@ -3,9 +3,16 @@ from __future__ import annotations
 from typing import Union
 
 from fastapi import APIRouter, status
+from fastapi.exceptions import HTTPException
 
-from src.marketplace.domain.models import Product, ProductOut
-from src.marketplace.application.products import get_products, add_new_product, get_product, delete_product
+from src.marketplace.domain.models import Product, ProductOut, OrderRequest
+from src.marketplace.application.products import (
+    get_products,
+    add_new_product,
+    get_product,
+    delete_product,
+    create_order
+)
 from src.marketplace.infrastructure.adapters.unit_of_work import RedisUnitOfWork
 
 
@@ -38,7 +45,11 @@ async def create(product: Product) -> Product:
     status_code=status.HTTP_200_OK
 )
 async def get(product_id: str) -> Product:
-    product: Product = get_product(RedisUnitOfWork(), product_id)
+    product: Product | None = get_product(RedisUnitOfWork(), product_id)
+    if not product:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"product with id: {product_id} does not exist!"
+        )
     return product
 
 
@@ -48,3 +59,12 @@ async def get(product_id: str) -> Product:
 )
 async def delete(product_id: str):
     delete_product(RedisUnitOfWork(), product_id)
+
+
+@router.post(
+    path="/products/{product_id}/buy",
+    status_code=status.HTTP_200_OK
+)
+async def buy(order_request: OrderRequest) -> dict:
+    create_order(RedisUnitOfWork(), order_request.product_id, order_request.quantity)
+    return {"message": "order created!"}
