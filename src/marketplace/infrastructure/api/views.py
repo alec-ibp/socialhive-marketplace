@@ -25,7 +25,6 @@ router: APIRouter = APIRouter()
     status_code=status.HTTP_200_OK
 )
 async def get_all(only_ids: bool = True) -> dict[str, list[Union[ProductOut, str]]]:
-    print(get_products(RedisUnitOfWork(), only_ids=only_ids))
     return {"results": get_products(RedisUnitOfWork(), only_ids=only_ids)}
 
 
