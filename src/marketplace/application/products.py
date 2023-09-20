@@ -44,3 +44,9 @@ def create_order(uow: AbstractUnitOfWork, product_id: int, quantity: float) -> N
         fee=0.2 * product.price,
         total=1.2 * product.price
     ))
+
+
+def update_quantity(uow: AbstractUnitOfWork, product_id: str, quantity: int) -> None:
+    with uow:
+        uow.product.update_quantity(product_id, quantity=quantity)
+        uow.commit()

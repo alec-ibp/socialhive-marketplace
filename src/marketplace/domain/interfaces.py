@@ -20,3 +20,7 @@ class AbstractRepository(ABC):
     @abstractmethod
     def delete(self, product_id: int) -> None:
         raise NotImplementedError
+
+    @abstractmethod
+    def update_quantity(self, product_id: int, quantity: int) -> None:
+        raise NotImplementedError

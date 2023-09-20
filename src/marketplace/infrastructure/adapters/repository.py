@@ -27,3 +27,10 @@ class ProductRepository(AbstractRepository):
 
     def delete(self, product_id: int) -> None:
         return Product.delete(product_id)
+
+    def update_quantity(self, product_id: int, quantity: int) -> Product | None:
+        product: Product | None = self.get(product_id)
+        if product:
+            product.quantity = quantity
+            product.save()
+            return product
