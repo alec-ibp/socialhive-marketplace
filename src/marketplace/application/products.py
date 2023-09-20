@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fastapi import status  # TODO should be a custom exception
+from fastapi import status
 from fastapi.exceptions import HTTPException  # TODO should be a custom exception
 
 from src.marketplace.domain.models import Product
