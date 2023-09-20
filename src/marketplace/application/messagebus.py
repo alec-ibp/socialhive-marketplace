@@ -18,7 +18,7 @@ def handler(event: Event, by_batch: bool = False) -> Any:
 
 def create_order_event(event: CreateOrder) -> None:
     request_body: dict = asdict(event)
-    response = requests.post(f"{settings.BASE_PAYMENTS_API}/payments/", json=request_body)
+    _ = requests.post(f"{settings.BASE_PAYMENTS_API}/payments/", json=request_body)
     # TODO catch errors of response
 
 
