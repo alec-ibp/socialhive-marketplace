@@ -1,5 +1,10 @@
 # MC Marketplace API
 
+![FastAPI](https://img.shields.io/badge/FastAPI-0.68.1-blue)
+![Python](https://img.shields.io/badge/Python-3.9.7-green)
+![Redis](https://img.shields.io/badge/Redis-6.2.5-red)
+![Docker](https://img.shields.io/badge/Docker-20.10.8-blue)
+
 This is a Python microservice example that provides a RESTful API for managing products in a marketplace. The API is built using the FastAPI framework and uses Redis as a data store and event broker.
 
 ## Getting Started
