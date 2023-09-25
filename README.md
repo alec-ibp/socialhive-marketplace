@@ -15,6 +15,11 @@ To get started with this project, you'll need to have Python 3.9 or later instal
 pip install -r requirements.txt
 ```
 
+or with poetry (i recommend it):
+```
+poetry install
+```
+
 Once you have the dependencies installed, you can start the API server by running the following command:
 
 ```
@@ -23,6 +28,17 @@ python main.py
 
 This will start the API server on `http://0.0.0.0:8080`.
 
+You can also run the project using Docker and Docker Compose.
+
+```
+docker-compose up
+```
+
+To build the docker image
+
+```
+docker build -t <docker-image-name>:<version/latest> .
+```
 
 ## Environment Variables
 
